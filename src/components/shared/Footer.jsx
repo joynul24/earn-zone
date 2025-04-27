@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+    <div className="bg-[#F3F3F3]">
+      <footer className="footer sm:footer-horizontal text-base-content p-10">
         <nav>
           <h6 className="footer-title">Quick Links</h6>
           <a className="link link-hover">Home</a>
@@ -56,6 +56,7 @@ const Footer = () => {
           </fieldset>
         </form>
       </footer>
+        <small className="flex justify-center py-4 text-gray-600">Copyright © {new Date().getFullYear()} - All right reserved by Doc House Ltd</small>
     </div>
   );
 };
