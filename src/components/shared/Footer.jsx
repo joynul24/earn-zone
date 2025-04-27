@@ -1,27 +1,45 @@
+import { FaSquareFacebook } from "react-icons/fa6";
+import { IoLogoLinkedin } from "react-icons/io5";
+import { FaGithub } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div>
       <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
         <nav>
-          <h6 className="footer-title">Services</h6>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+          <h6 className="footer-title">Quick Links</h6>
+          <a className="link link-hover">Home</a>
+          <a className="link link-hover">Contact Us</a>
+          <a className="link link-hover">Blog</a>
+          <a className="link link-hover">About</a>
         </nav>
         <nav>
-          <h6 className="footer-title">Company</h6>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
+          <h6 className="footer-title">Support</h6>
+          <a className="link link-hover">FAQ</a>
+          <a className="link link-hover">Help Center</a>
+          <a className="link link-hover">Privacy Policy</a>
+          <a className="link link-hover">Refund Policy</a>
         </nav>
         <nav>
-          <h6 className="footer-title">Legal</h6>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+          <h6 className="footer-title"> Get in touch</h6>
+          <div className="flex gap-4 items-center">
+            <Link to="https://web.facebook.com/ma.joynul">
+              <a className="link link-hover text-xl">
+                <FaSquareFacebook />
+              </a>
+            </Link>
+            <Link to="https://www.linkedin.com/">
+              <a className="link link-hover text-xl">
+                <IoLogoLinkedin />
+              </a>
+            </Link>
+            <Link to="https://github.com/joynul24">
+              <a className="link link-hover text-xl">
+                <FaGithub />
+              </a>
+            </Link>
+          </div>
         </nav>
         <form>
           <h6 className="footer-title">Newsletter</h6>

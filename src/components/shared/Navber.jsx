@@ -1,7 +1,16 @@
+import { Link, NavLink } from "react-router-dom";
+
 const Navber = () => {
+
+  const links = <>
+    <li><NavLink to='/'>Home</NavLink></li>
+    <li><NavLink to='/'>Contact Us</NavLink></li>
+    <li><NavLink to='https://www.seoclerk.com/blog'>Blog</NavLink></li>
+  </>
+
   return (
-    <>
-      <div className="navbar bg-base-100 shadow-sm">
+    <div className="bg-red-100">
+      <div className="navbar max-w-7xl mx-auto shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -25,55 +34,26 @@ const Navber = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+             {links}
             </ul>
           </div>
-          <h3 className=" md:text-xl lg:text-2xl md:font-bold">Earn Zone</h3>
+          <Link to='/'>
+          <h3 className=" md:text-xl md:font-bold">Earn Zone</h3>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+           {links}
           </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end gap-2">
+          <Link to='https://github.com/joynul24/earn-zone'>
+          <button className="btn">Join as Developer</button>
+          </Link>
+          <button className="btn">Login</button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
