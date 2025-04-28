@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import './Navber.css'
 
 const Navber = () => {
 
@@ -10,7 +11,7 @@ const Navber = () => {
 
   return (
     <div className="bg-red-100">
-      <div className="navbar max-w-7xl mx-auto shadow-sm">
+      <div className="navbar font-i max-w-7xl mx-auto shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -38,7 +39,7 @@ const Navber = () => {
             </ul>
           </div>
           <Link to='/'>
-          <h3 className=" md:text-xl md:font-bold">Earn Zone</h3>
+          <h3 className=" md:text-xl md:font-bold font-m"><span className="text-[#07332F]">Earn</span> <span className="text-[#F7A582]">Zone</span></h3>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -50,7 +51,9 @@ const Navber = () => {
           <Link to='https://github.com/joynul24/earn-zone'>
           <button className="btn">Join as Developer</button>
           </Link>
-          <button className="btn">Login</button>
+         <Link to='/login'>
+         <button className="btn">Login</button>
+         </Link>
         </div>
       </div>
     </div>

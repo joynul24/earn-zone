@@ -24,21 +24,24 @@ const Footer = () => {
         <nav>
           <h6 className="footer-title"> Get in touch</h6>
           <div className="flex gap-4 items-center">
-            <Link to="https://web.facebook.com/ma.joynul">
-              <a className="link link-hover text-xl">
-                <FaSquareFacebook />
-              </a>
-            </Link>
-            <Link to="https://www.linkedin.com/">
-              <a className="link link-hover text-xl">
-                <IoLogoLinkedin />
-              </a>
-            </Link>
-            <Link to="https://github.com/joynul24">
-              <a className="link link-hover text-xl">
-                <FaGithub />
-              </a>
-            </Link>
+            <a
+              href="https://web.facebook.com/ma.joynul"
+              className="link link-hover text-xl"
+            >
+              <FaSquareFacebook />
+            </a>
+            <a
+              href="https://www.linkedin.com/"
+              className="link link-hover text-xl"
+            >
+              <IoLogoLinkedin />
+            </a>
+            <a
+              href="https://github.com/joynul24"
+              className="link link-hover text-xl"
+            >
+              <FaGithub />
+            </a>
           </div>
         </nav>
         <form>
@@ -56,7 +59,10 @@ const Footer = () => {
           </fieldset>
         </form>
       </footer>
-        <small className="flex justify-center py-4 text-gray-600">Copyright © {new Date().getFullYear()} - All right reserved by Doc House Ltd</small>
+      <small className="flex justify-center py-4 text-gray-600">
+        Copyright © {new Date().getFullYear()} - All right reserved by Doc House
+        Ltd
+      </small>
     </div>
   );
 };
