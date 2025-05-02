@@ -8,8 +8,13 @@ const Login = () => {
     console.log("google");
   };
 
-  const handleLogin = () => {
-    console.log("login");
+  const handleLogin = (e) => {
+    e.preventDefault()
+    // const form = e.target;
+
+    // const email = form.email.value;
+    // const password = form.password.value;
+
   };
 
   return (
@@ -51,7 +56,7 @@ const Login = () => {
               />
             </div>
             <div className="form-control mt-3">
-              <button className="rounded-full btn btn-primary w-full bg-[#07332F] border-0 text-white">
+              <button className="rounded-full btn btn-primary w-full bg-[#164943] hover:bg-[#07332F] border-0 text-white">
                 Login
               </button>
             </div>

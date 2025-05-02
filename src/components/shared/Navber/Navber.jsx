@@ -1,19 +1,51 @@
 import { Link, NavLink } from "react-router-dom";
-import './Navber.css'
+import "./Navber.css";
+import logo from "../../../assets/logos/earn-logo-small.png";
+import { toast } from "react-toastify";
+import { useContext } from "react";
+import AuthContext from "../../../context/Authcontext";
 
 const Navber = () => {
+  const { signOutUser, user } = useContext(AuthContext);
 
-  const links = <>
-    <li><NavLink to='/'>Home</NavLink></li>
-    <li><NavLink to='/'>Contact Us</NavLink></li>
-    <li><NavLink to='https://www.seoclerk.com/blog'>Blog</NavLink></li>
-  </>
+  const handleSignOut = () => {
+    signOutUser();
+    if (signOutUser) {
+      toast.success("User SignOut Successfuly");
+    }
+  };
+
+  const links = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="cotactUs">Contact Us</NavLink>
+      </li>
+      <li>
+        <NavLink to="https://www.seoclerk.com/blog">Blog</NavLink>
+      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="dashboard">Dashboard</NavLink>
+          </li>
+          <li>
+              <button className="">
+              Available Coin<div className="badge badge-xs badge-secondary">+99</div>
+              </button>
+          </li>
+        </>
+      )}
+    </>
+  );
 
   return (
-    <div className="bg-red-100">
-      <div className="navbar font-i max-w-7xl mx-auto shadow-sm">
+    <div className="">
+      <div className="navbar  fixed z-10 font-i max-w-7xl mx-auto">
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown text-white">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -33,27 +65,73 @@ const Navber = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-black"
             >
-             {links}
+              {links}
             </ul>
           </div>
-          <Link to='/'>
-          <h3 className=" md:text-xl md:font-bold font-m"><span className="text-[#07332F]">Earn</span> <span className="text-[#F7A582]">Zone</span></h3>
+          <Link to="/">
+            <div className="flex items-center gap-2">
+              <img className="w-[25px]  md:w-[40px]" src={logo} alt="" />
+              <h3 className=" md:text-xl md:font-bold font-m">
+                <span className="text-[#FFAD5A]">Earn</span>{" "}
+                <span className="text-[#FFAD5A]">Zone</span>
+              </h3>
+            </div>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-           {links}
-          </ul>
+          <ul className=" text-white menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end gap-2">
-          <Link to='https://github.com/joynul24/earn-zone'>
-          <button className="btn">Join as Developer</button>
+          <Link to="https://github.com/joynul24/earn-zone">
+            <button className="btn btn-sm">Join as Developer</button>
           </Link>
-         <Link to='/login'>
-         <button className="btn">Login</button>
-         </Link>
+
+          {user ? (
+            <div className="dropdown dropdown-end z-50">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div
+                  title={user?.displayName}
+                  className="w-10 rounded-full border-green-500 border-[1px]"
+                >
+                  <img
+                    className=""
+                    referrerPolicy="no-referrer"
+                    alt="User Profile Photo"
+                    src={user?.photoURL}
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="font-l menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-bo w-52"
+              >
+                <li>
+                  <NavLink to="#">Update Profiele</NavLink>
+                </li>
+                <li>
+                  <NavLink to="#">Settings</NavLink>
+                </li>
+                <li className="mt-2">
+                  <button
+                    onClick={handleSignOut}
+                    className=" bg-[#FF5959] hover:bg-[#f36f6f]  block text-white text-center"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link to="/login">
+              <button className="btn btn-sm">Login</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

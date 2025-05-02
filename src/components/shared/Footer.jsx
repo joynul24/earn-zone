@@ -26,19 +26,19 @@ const Footer = () => {
           <div className="flex gap-4 items-center">
             <a
               href="https://web.facebook.com/ma.joynul"
-              className="link link-hover text-xl"
+              className="link link-hover text-2xl text-blue-600"
             >
               <FaSquareFacebook />
             </a>
             <a
               href="https://www.linkedin.com/"
-              className="link link-hover text-xl"
+              className="link link-hover text-2xl text-blue-400"
             >
               <IoLogoLinkedin />
             </a>
             <a
               href="https://github.com/joynul24"
-              className="link link-hover text-xl"
+              className="link link-hover text-2xl"
             >
               <FaGithub />
             </a>
@@ -48,13 +48,13 @@ const Footer = () => {
           <h6 className="footer-title">Newsletter</h6>
           <fieldset className="w-80">
             <label>Enter your email address</label>
-            <div className="join">
+            <div className="join mt-2">
               <input
                 type="text"
                 placeholder="username@site.com"
                 className="input input-bordered join-item"
               />
-              <button className="btn btn-primary join-item">Subscribe</button>
+              <button className="btn bg-[#07332F] hover:bg-[#F7A582] join-item text-white">Subscribe</button>
             </div>
           </fieldset>
         </form>
