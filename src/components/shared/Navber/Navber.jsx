@@ -85,7 +85,7 @@ const Navber = () => {
         </div>
         <div className="navbar-end gap-2">
           <Link to="https://github.com/joynul24/earn-zone">
-            <button className="btn btn-sm">Join as Developer</button>
+            <button className="btn btn-sm text-[10px]">Join as Developer</button>
           </Link>
 
           {user ? (
@@ -129,7 +129,7 @@ const Navber = () => {
             </div>
           ) : (
             <Link to="/login">
-              <button className="btn btn-sm">Login</button>
+              <button className="btn btn-sm text-[10px]">Login</button>
             </Link>
           )}
         </div>

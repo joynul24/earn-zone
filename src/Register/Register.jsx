@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const Register = () => {
 
-  const {createUser, updateUserProfile} = useContext(AuthContext)
+  const {createUser,loginUserWithGoogle, updateUserProfile} = useContext(AuthContext)
   const navigate = useNavigate()
 
   const {
@@ -18,7 +18,17 @@ const Register = () => {
   } = useForm();
 
   const handleGoogleRegister = () => {
-    console.log("google");
+    loginUserWithGoogle()
+    .then((result) => {
+      navigate("/");
+      if (result.user) {
+        toast.success("User google register Successfuly");
+        return;
+      }
+    })
+    .catch(() => {
+      toast.error("Google failed to be register!");
+    });
   };
 
   const onSubmit = (data) => {
