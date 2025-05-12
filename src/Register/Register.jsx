@@ -5,11 +5,12 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import AuthContext from "../context/Authcontext";
 import { toast } from "react-toastify";
+// import axios from "axios";
 
 const Register = () => {
-
-  const {createUser,loginUserWithGoogle, updateUserProfile} = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { createUser, loginUserWithGoogle, updateUserProfile } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -19,31 +20,31 @@ const Register = () => {
 
   const handleGoogleRegister = () => {
     loginUserWithGoogle()
-    .then((result) => {
-      navigate("/");
-      if (result.user) {
-        toast.success("User google register Successfuly");
-        return;
-      }
-    })
-    .catch(() => {
-      toast.error("Google failed to be register!");
-    });
+      .then((result) => {
+        navigate("/");
+        if (result.user) {
+          toast.success("User google register Successfuly");
+          return;
+        }
+      })
+      .catch(() => {
+        toast.error("Google failed to be register!");
+      });
   };
 
   const onSubmit = (data) => {
     createUser(data.email, data.password)
-    .then(result => {
-      console.log(result.user);
-      updateUserProfile({ displayName: data.name, photoURL: data.photo })
-      if(result.user) {
-        toast.success(`Mr ${data.name} has succsessfull your registration`);
-        navigate('/')
-      }
-    })
-    .catch(() => {
-      toast.error('Sorry, with this auth you have made a allredy account!');
-    })
+      .then((result) => {
+        console.log(result.user);
+        updateUserProfile({ displayName: data.name, photoURL: data.photo });
+        if (result.user) {
+          toast.success(`Mr ${data.name} has succsessfull your registration`);
+          navigate("/");
+        }
+      })
+      .catch(() => {
+        toast.error("Sorry, with this auth you have made a allredy account!");
+      });
   };
 
   return (
@@ -109,15 +110,12 @@ const Register = () => {
                 <span className="label-text">Password*</span>
               </label>
               <input
-                {...register(
-                  "password",
-                  {
-                    required: true,
-                    minLength: 6,
-                    maxLength: 20,
-                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                  },
-                )}
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 20,
+                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                })}
                 name="password"
                 type="password"
                 placeholder="Your password"
@@ -133,7 +131,8 @@ const Register = () => {
               )}
               {errors.password?.type === "pattern" && (
                 <span className="text-red-400">
-                  Password must have one uppercase one lower case, one number and one special character.
+                  Password must have one uppercase one lower case, one number
+                  and one special character.
                 </span>
               )}
             </div>
@@ -151,7 +150,11 @@ const Register = () => {
               </select>
             </div>
             <div className="form-control mt-3">
-              <input className="rounded-full btn btn-primary w-full bg-[#164943] hover:bg-[#07332F] border-0 text-white" type="submit" value="Register" />
+              <input
+                className="rounded-full btn btn-primary w-full bg-[#164943] hover:bg-[#07332F] border-0 text-white"
+                type="submit"
+                value="Register"
+              />
             </div>
             <p className="font-semibold text-center text-[#F7A582]">
               Already have an account? please{" "}

@@ -33,7 +33,7 @@ const Navber = () => {
           </li>
           <li>
               <button className="">
-              Available Coin<div className="badge badge-xs badge-secondary">+99</div>
+              Available Coin<div className="badge badge-xs badge-secondary">+0</div>
               </button>
           </li>
         </>
@@ -42,8 +42,8 @@ const Navber = () => {
   );
 
   return (
-    <div className="">
-      <div className="navbar  fixed z-10 font-i max-w-7xl mx-auto">
+    <>
+      <div className="navbar fixed z-10 font-i max-w-7xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown text-white">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -134,7 +134,7 @@ const Navber = () => {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

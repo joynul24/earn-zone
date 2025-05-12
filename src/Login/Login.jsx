@@ -74,7 +74,7 @@ const Login = () => {
                 required
               />
                {errors.email && (
-                <span className="text-red-400">Email field is required</span>
+                <span className="text-red-400">These credentials do not match our records.</span>
               )}
             </div>
             {/* password */}
