@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import AuthContext from "../context/Authcontext";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const Login = () => {
 
@@ -21,9 +22,16 @@ const Login = () => {
   const handleGoogleLogin = () => {
     loginUserWithGoogle()
      .then((result) => {
-          Navigate("/");
           if (result.user) {
+             axios.post(
+          `${import.meta.env.VITE_API_URL}/users/${result.user.email}`, {
+            name: result.user.displayName,
+            image: result.user.photoURL,
+            email: result.user.email,
+            role: 'worker'
+          })
             toast.success("User google login Successfuly");
+            Navigate("/");
             return;
           }
         })
@@ -37,6 +45,13 @@ const Login = () => {
     .then((result) => {
       Navigate("/");
       if (result.user) {
+           axios.post(
+          `${import.meta.env.VITE_API_URL}/users/${data?.email}`, {
+            name: data.name,
+            image: data.photo,
+            email: data.email,
+            role: data.selection || 'worker'
+          })
         toast.success(`Mr ${result.user.displayName} has Successfuly your login`);
         return;
       }

@@ -30,6 +30,9 @@ const AuthProvider = (props) => {
 
   const loginUserWithGoogle = () => {
     setLoading(true);
+    googleProvider.setCustomParameters({
+      prompt: "select_account",
+    });
     return signInWithPopup(auth, googleProvider);
   };
 
@@ -45,8 +48,6 @@ const AuthProvider = (props) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-
-      // save user info in database
 
       setLoading(false);
     });

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import AuthContext from "../context/Authcontext";
 import { toast } from "react-toastify";
-// import axios from "axios";
+import axios from "axios";
 
 const Register = () => {
   const { createUser, loginUserWithGoogle, updateUserProfile } =
@@ -21,9 +21,16 @@ const Register = () => {
   const handleGoogleRegister = () => {
     loginUserWithGoogle()
       .then((result) => {
-        navigate("/");
         if (result.user) {
+            axios.post(
+          `${import.meta.env.VITE_API_URL}/users/${result.user.email}`, {
+            name: result.user.displayName,
+            image: result.user.photoURL,
+            email: result.user.email,
+            role: 'worker'
+          })
           toast.success("User google register Successfuly");
+          navigate("/");
           return;
         }
       })
@@ -34,10 +41,16 @@ const Register = () => {
 
   const onSubmit = (data) => {
     createUser(data.email, data.password)
-      .then((result) => {
-        console.log(result.user);
-        updateUserProfile({ displayName: data.name, photoURL: data.photo });
+    .then((result) => {
+      updateUserProfile({ displayName: data.name, photoURL: data.photo});
         if (result.user) {
+           axios.post(
+          `${import.meta.env.VITE_API_URL}/users/${data?.email}`, {
+            name: data.name,
+            image: data.photo,
+            email: data.email,
+            role: data.selection || 'worker'
+          })
           toast.success(`Mr ${data.name} has succsessfull your registration`);
           navigate("/");
         }
@@ -141,7 +154,7 @@ const Register = () => {
               <p className="text-gray-600">Select your category*</p>
               <select
                 defaultValue="Choose your rule"
-                {...register("selection")}
+                {...register("selection", { required: true })}
                 name="selection"
                 className="select w-full rounded-full"
               >

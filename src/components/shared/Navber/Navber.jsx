@@ -32,9 +32,10 @@ const Navber = () => {
             <NavLink to="dashboard">Dashboard</NavLink>
           </li>
           <li>
-              <button className="">
-              Available Coin<div className="badge badge-xs badge-secondary">+0</div>
-              </button>
+            <button className="">
+              Available Coin
+              <div className="badge badge-xs badge-secondary">+0</div>
+            </button>
           </li>
         </>
       )}
@@ -43,7 +44,7 @@ const Navber = () => {
 
   return (
     <>
-      <div className="navbar fixed z-10 font-i max-w-7xl mx-auto">
+      <div className="navbar  backdrop-blur-md bg-white/5 fixed z-10 font-i max-w-7xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown text-white">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -81,11 +82,13 @@ const Navber = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className=" text-white menu menu-horizontal px-1">{links}</ul>
+          <ul className=" text-black menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end gap-2">
           <Link to="https://github.com/joynul24/earn-zone">
-            <button className="btn btn-sm text-[10px]">Join as Developer</button>
+            <button className="btn border-0 btn-sm text-[10px]">
+              Join as Developer
+            </button>
           </Link>
 
           {user ? (
@@ -129,7 +132,7 @@ const Navber = () => {
             </div>
           ) : (
             <Link to="/login">
-              <button className="btn btn-sm text-[10px]">Login</button>
+              <button className="btn border-0 btn-sm text-[10px]">Login</button>
             </Link>
           )}
         </div>
