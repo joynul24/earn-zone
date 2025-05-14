@@ -27,7 +27,8 @@ const Register = () => {
             name: result.user.displayName,
             image: result.user.photoURL,
             email: result.user.email,
-            role: 'worker'
+            role: 'worker',
+            coin: 10,
           })
           toast.success("User google register Successfuly");
           navigate("/");
@@ -49,7 +50,8 @@ const Register = () => {
             name: data.name,
             image: data.photo,
             email: data.email,
-            role: data.selection || 'worker'
+            role: data.selection || 'worker',
+            coin: data.selection === 'buyer' ? 50 : 10,
           })
           toast.success(`Mr ${data.name} has succsessfull your registration`);
           navigate("/");
@@ -158,8 +160,8 @@ const Register = () => {
                 name="selection"
                 className="select w-full rounded-full"
               >
-                <option>Worker</option>
-                <option>Buyer</option>
+                <option>worker</option>
+                <option>buyer</option>
               </select>
             </div>
             <div className="form-control mt-3">

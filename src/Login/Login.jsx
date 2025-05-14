@@ -28,7 +28,8 @@ const Login = () => {
             name: result.user.displayName,
             image: result.user.photoURL,
             email: result.user.email,
-            role: 'worker'
+            role: 'worker',
+            coin: 10,
           })
             toast.success("User google login Successfuly");
             Navigate("/");
@@ -50,7 +51,7 @@ const Login = () => {
             name: data.name,
             image: data.photo,
             email: data.email,
-            role: data.selection || 'worker'
+            role: data.selection || 'worker',
           })
         toast.success(`Mr ${result.user.displayName} has Successfuly your login`);
         return;
