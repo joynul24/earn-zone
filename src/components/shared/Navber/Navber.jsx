@@ -2,11 +2,40 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navber.css";
 import logo from "../../../assets/logos/earn-logo-small.png";
 import { toast } from "react-toastify";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../../context/Authcontext";
+import { FiLogOut } from "react-icons/fi";
+import axios from "axios";
+import Swal from 'sweetalert2'
+import coinImg from "../../../assets/logos/coin.png"
 
 const Navber = () => {
   const { signOutUser, user } = useContext(AuthContext);
+  const [coins, setCoins] = useState(0);
+
+  useEffect(() => {
+    const fetchCoins = async () => {
+      if (user?.email) {
+        try {
+          const res = await axios.get(
+            `${import.meta.env.VITE_API_URL}/users/${user.email}`
+          );
+          setCoins(res.data.coin);
+          Swal.fire({
+            position: "center",
+            imageUrl: coinImg,
+            title: `As a new user, you have received ${res.data.coin} coin`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } catch (error) {
+          toast.error(error.message);
+        }
+      }
+    };
+
+    fetchCoins();
+  }, [user]);
 
   const handleSignOut = () => {
     signOutUser();
@@ -34,7 +63,7 @@ const Navber = () => {
           <li>
             <button className="">
               Available Coin
-              <div className="badge badge-xs badge-secondary">+0</div>
+              <div className="badge badge-xs badge-secondary">+{coins}</div>
             </button>
           </li>
         </>
@@ -123,9 +152,10 @@ const Navber = () => {
                 <li className="mt-2">
                   <button
                     onClick={handleSignOut}
-                    className=" bg-[#FF5959] hover:bg-[#f36f6f]  block text-white text-center"
+                    className="btn btn-ghost bg-gray-200 text-gray-600"
                   >
-                    Logout
+                    <FiLogOut />
+                    Sign Out
                   </button>
                 </li>
               </ul>
